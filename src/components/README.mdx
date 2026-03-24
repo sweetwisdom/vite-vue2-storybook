@@ -1,0 +1,83 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta title="Get Started/项目介绍" />
+
+# vite-vue2-ui
+
+基于 **Vite 6 + Vue 2.7 + SCSS** 的组件库，使用 Storybook 7 进行组件开发与文档预览。
+
+## 安装
+
+```bash
+pnpm install
+```
+
+## 全局变量
+
+| 变量 | 值 | 用途 |
+|------|-----|------|
+| `$primary` | `#4a90e2` | 主色调 |
+| `$danger` | `#ff4d4f` | 危险色 |
+| `$border-radius` | `4px` | 圆角 |
+| `$font-size-base` | `14px` | 基础字号 |
+
+## 快速开始
+
+```bash
+# 启动开发服务器
+pnpm dev
+
+# 启动 Storybook
+pnpm storybook
+
+# 构建生产版本
+pnpm build
+```
+
+## 现有组件
+
+| 组件 | 路径 | 说明 |
+|------|------|------|
+| MyButton | `src/components/MyButton.vue` | 按钮组件 |
+
+## 开发组件
+
+1. 在 `src/components/` 下创建 `.vue` 组件
+2. 在同目录创建 `.stories.js` 文件
+3. 运行 `pnpm storybook` 预览
+
+<style>
+  {`
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+    }
+    th, td {
+      border: 1px solid #eee;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background: #f9f9f9;
+    }
+    code {
+      background: #f0f0f0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-size: 13px;
+    }
+    pre {
+      background: #1e1e1e;
+      color: #fff;
+      padding: 16px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+  `}
+</style>

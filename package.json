@@ -1,0 +1,32 @@
+{
+  "name": "vite-vue2",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "build-storybook": "storybook build"
+  },
+  "dependencies": {
+    "vue": "~2.7.16",
+    "vue-router": "^3.6.5"
+  },
+  "devDependencies": {
+    "@storybook/addon-essentials": "7.6.24",
+    "@storybook/addon-interactions": "7.6.24",
+    "@storybook/addon-links": "7.6.24",
+    "@storybook/blocks": "7.6.24",
+    "@storybook/test": "7.6.24",
+    "@storybook/vue": "7.6.24",
+    "@storybook/vue-vite": "7.6.24",
+    "@vitejs/plugin-vue2": "^2.3.4",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "sass-embedded": "^1.98.0",
+    "storybook": "7.6.24",
+    "vite": "^6.3.5"
+  }
+}
