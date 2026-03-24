@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户资料 - mohub 专业科学计算协作云平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @import url('https://api.fontshare.com/v2/css?f[]=outfit@400,500,600,700,800&f[]=satoshi@400,500,700&display=swap');
+
+        :root {
+            --brand-orange: #FE7300;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --bg-page: #FFFFFF;
+            --bg-alt: #F8FAFC;
+        }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: var(--bg-alt);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-display {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .profile-card {
+            background: white;
+            border: 1px solid #E2E8F0;
+            border-radius: 1.5rem;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-link {
+            position: relative;
+            padding-bottom: 1rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .tab-link:hover {
+            color: var(--text-main);
+        }
+
+        .tab-link-active {
+            color: var(--brand-orange) !important;
+        }
+
+        .tab-link-active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--brand-orange);
+        }
+
+        .contribution-tile {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            background-color: #F1F5F9;
+        }
+
+        .contribution-tile.level-1 { background-color: #FFEDD5; }
+        .contribution-tile.level-2 { background-color: #FED7AA; }
+        .contribution-tile.level-3 { background-color: #FB923C; }
+        .contribution-tile.level-4 { background-color: #FE7300; }
+
+        .btn-primary {
+            background-color: var(--brand-orange);
+            color: white;
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #E66800;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background-color: white;
+            color: var(--text-main);
+            border: 1px solid #E2E8F0;
+            padding: 0.625rem 1.25rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #F8FAFC;
+        }
+    </style>
+  <style>sd-component { display: block; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <!-- Shared Navigation -->
+        <!-- component: NavigationBar (f3e0ad58-b172-4b4c-baf0-da1baa10d989) -->
+<div v-scope="{ ...{&quot;activeItem&quot;:&quot;profile&quot;,&quot;logoHref&quot;:&quot;#&quot;,&quot;homeHref&quot;:&quot;#&quot;,&quot;techHref&quot;:&quot;#&quot;,&quot;shareHref&quot;:&quot;#&quot;,&quot;uniHref&quot;:&quot;#&quot;,&quot;compHref&quot;:&quot;#&quot;,&quot;aiHref&quot;:&quot;#&quot;,&quot;showNotificationBadge&quot;:true,&quot;userAvatarUrl&quot;:&quot;https://api.dicebear.com/7.x/notionists/svg?seed=Felix&quot;}, $emit() {} }">
+<header class="sticky top-0 z-50 bg-white border-b border-slate-100">
+    <div class="max-w-[1440px] mx-auto px-10 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-10">
+            <a :href="logoHref" class="flex items-center gap-2">
+                <span class="font-display text-2xl font-extrabold tracking-tight" style="font-family: 'Outfit', sans-serif;">
+                    <span class="text-[#FE7300]">mo</span>hub
+                </span>
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 h-full">
+                <a :href="homeHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'home' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    首页
+                    <div v-if="activeItem === 'home'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="techHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'tech' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    技术交流
+                    <div v-if="activeItem === 'tech'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="shareHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'share' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    众创共享
+                    <div v-if="activeItem === 'share'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="uniHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'uni' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    高校专区
+                    <div v-if="activeItem === 'uni'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="compHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'comp' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    竞赛
+                    <div v-if="activeItem === 'comp'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="aiHref" class="relative font-medium transition-colors hover:text-slate-900 flex items-center gap-1.5" :class="activeItem === 'ai' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    <iconify-icon icon="lucide:sparkles" :class="activeItem === 'ai' ? 'text-[#FE7300]' : 'text-[#FE7300]'"></iconify-icon>
+                    智能问答助手
+                    <div v-if="activeItem === 'ai'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-1">
+                <button @click="$emit('search')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all">
+                    <iconify-icon icon="lucide:search" class="text-xl"></iconify-icon>
+                </button>
+                <button @click="$emit('openShelf')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all">
+                    <iconify-icon icon="lucide:library" class="text-xl"></iconify-icon>
+                </button>
+                <button @click="$emit('openNotifications')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all relative">
+                    <iconify-icon icon="lucide:bell" class="text-xl"></iconify-icon>
+                    <span v-if="showNotificationBadge" class="absolute top-2 right-2 w-1.5 h-1.5 bg-[#FE7300] rounded-full ring-2 ring-white"></span>
+                </button>
+            </div>
+            <div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
+            <div @click="$emit('toggleUserMenu')" class="flex items-center cursor-pointer group">
+                <div class="w-9 h-9 rounded-full bg-slate-50 border border-slate-100 overflow-hidden">
+                    <img :src="userAvatarUrl" alt="User Avatar" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</div>
+<!-- /component: NavigationBar (f3e0ad58-b172-4b4c-baf0-da1baa10d989) -->
+
+        <main class="flex-1">
+            <!-- Profile Hero Section -->
+            <section class="bg-white border-b border-slate-100">
+                <div class="max-w-[1440px] mx-auto px-10 pt-12">
+                    <div class="flex flex-col md:flex-row items-start gap-8 mb-10">
+                        <!-- Avatar -->
+                        <div class="relative">
+                            <div class="w-32 h-32 rounded-3xl border-4 border-white shadow-lg overflow-hidden ring-1 ring-slate-100">
+                                <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Felix" alt="User Avatar" class="w-full h-full object-cover">
+                            </div>
+                            <button class="absolute -bottom-2 -right-2 w-10 h-10 bg-white rounded-full shadow-md border border-slate-100 flex items-center justify-center text-slate-400 hover:text-[#FE7300]">
+                                <iconify-icon icon="lucide:camera" class="text-lg"></iconify-icon>
+                            </button>
+                        </div>
+
+                        <!-- User Info -->
+                        <div class="flex-1">
+                            <div class="flex flex-wrap items-center gap-4 mb-3">
+                                <h1 class="text-3xl font-display font-extrabold text-slate-900">Felix Zhang</h1>
+                                <span class="px-3 py-1 bg-orange-50 text-[#FE7300] text-xs font-bold rounded-full border border-orange-100 flex items-center gap-1">
+                                    <iconify-icon icon="lucide:shield-check"></iconify-icon>
+                                    认证专家
+                                </span>
+                                <div class="flex gap-2 ml-auto">
+                                    <button class="btn-secondary flex items-center gap-2 text-sm">
+                                        <iconify-icon icon="lucide:share-2"></iconify-icon>分享
+                                    </button>
+                                    <button class="btn-primary flex items-center gap-2 text-sm">
+                                        <iconify-icon icon="lucide:edit-3"></iconify-icon>编辑资料
+                                    </button>
+                                </div>
+                            </div>
+                            <p class="text-slate-500 max-w-2xl mb-6">专注科学计算与仿真模拟。Syslab 贡献者，致力于让复杂计算更简单。前 MATLAB 高级工程师。</p>
+                            <div class="flex gap-8 text-sm">
+                                <div class="flex items-center gap-1.5">
+                                    <span class="font-bold text-slate-900">1,284</span>
+                                    <span class="text-slate-400">关注</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="font-bold text-slate-900">5,420</span>
+                                    <span class="text-slate-400">粉丝</span>
+                                </div>
+                                <div class="flex items-center gap-1.5">
+                                    <span class="font-bold text-slate-900">128</span>
+                                    <span class="text-slate-400">贡献积分</span>
+                                </div>
+                                <div class="flex items-center gap-1.5 text-slate-400">
+                                    <iconify-icon icon="lucide:map-pin"></iconify-icon>
+                                    <span>中国, 杭州</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabs Navigation -->
+                    <nav class="flex gap-10">
+                        <a href="#" class="tab-link tab-link-active">概览</a>
+                        <a href="#" class="tab-link">贡献</a>
+                        <a href="#" class="tab-link">保存</a>
+                        <a href="#" class="tab-link">设置</a>
+                    </nav>
+                </div>
+            </section>
+
+            <!-- Content Area -->
+            <section class="max-w-[1440px] mx-auto px-10 py-12">
+                <div class="grid grid-cols-12 gap-8">
+                    <!-- Main Column (Overview) -->
+                    <div class="col-span-12 lg:col-span-8 flex flex-col gap-8">
+                        <!-- Quick Stats Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                            <div class="profile-card p-6 flex flex-col items-center justify-center text-center">
+                                <iconify-icon icon="lucide:file-text" class="text-2xl text-[#FE7300] mb-2"></iconify-icon>
+                                <span class="text-2xl font-display font-extrabold">42</span>
+                                <span class="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">发布帖子</span>
+                            </div>
+                            <div class="profile-card p-6 flex flex-col items-center justify-center text-center">
+                                <iconify-icon icon="lucide:thumbs-up" class="text-2xl text-[#FE7300] mb-2"></iconify-icon>
+                                <span class="text-2xl font-display font-extrabold">1.2k</span>
+                                <span class="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">获得点赞</span>
+                            </div>
+                            <div class="profile-card p-6 flex flex-col items-center justify-center text-center">
+                                <iconify-icon icon="lucide:award" class="text-2xl text-[#FE7300] mb-2"></iconify-icon>
+                                <span class="text-2xl font-display font-extrabold">15</span>
+                                <span class="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">精选资源</span>
+                            </div>
+                            <div class="profile-card p-6 flex flex-col items-center justify-center text-center">
+                                <iconify-icon icon="lucide:eye" class="text-2xl text-[#FE7300] mb-2"></iconify-icon>
+                                <span class="text-2xl font-display font-extrabold">25k</span>
+                                <span class="text-xs text-slate-400 uppercase tracking-wider font-bold mt-1">内容浏览</span>
+                            </div>
+                        </div>
+
+                        <!-- Activity Heatmap -->
+                        <div class="profile-card p-8">
+                            <div class="flex justify-between items-center mb-8">
+                                <h3 class="text-lg font-bold">近期活动统计</h3>
+                                <div class="flex gap-4 items-center text-[10px] text-slate-400">
+                                    <span>Less</span>
+                                    <div class="flex gap-1">
+                                        <div class="contribution-tile"></div>
+                                        <div class="contribution-tile level-1"></div>
+                                        <div class="contribution-tile level-2"></div>
+                                        <div class="contribution-tile level-3"></div>
+                                        <div class="contribution-tile level-4"></div>
+                                    </div>
+                                    <span>More</span>
+                                </div>
+                            </div>
+                            <!-- Placeholder for Heatmap -->
+                            <div class="flex flex-wrap gap-2">
+                                <div v-for="n in 56" class="contribution-tile" :class="{'level-1': n%7==0, 'level-2': n%11==0, 'level-4': n%13==0}"></div>
+                                <!-- Manual implementation for static HTML -->
+                                <div class="contribution-tile level-1"></div><div class="contribution-tile"></div><div class="contribution-tile level-2"></div><div class="contribution-tile"></div><div class="contribution-tile level-4"></div><div class="contribution-tile"></div><div class="contribution-tile"></div>
+                                <div class="contribution-tile"></div><div class="contribution-tile level-3"></div><div class="contribution-tile"></div><div class="contribution-tile"></div><div class="contribution-tile level-2"></div><div class="contribution-tile"></div><div class="contribution-tile level-1"></div>
+                                <div class="contribution-tile level-2"></div><div class="contribution-tile"></div><div class="contribution-tile"></div><div class="contribution-tile"></div><div class="contribution-tile level-1"></div><div class="contribution-tile level-3"></div><div class="contribution-tile"></div>
+                                <div class="contribution-tile"></div><div class="contribution-tile level-1"></div><div class="contribution-tile level-4"></div><div class="contribution-tile"></div><div class="contribution-tile"></div><div class="contribution-tile"></div><div class="contribution-tile level-2"></div>
+                            </div>
+                            <p class="mt-6 text-sm text-slate-400">过去一年累计贡献 1,422 次</p>
+                        </div>
+
+                        <!-- Recent Content List -->
+                        <div class="profile-card overflow-hidden">
+                            <div class="px-8 py-6 border-b border-slate-50">
+                                <h3 class="text-lg font-bold">最近发布</h3>
+                            </div>
+                            <div class="divide-y divide-slate-50">
+                                <div class="p-8 hover:bg-slate-50 transition-colors group">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="text-base font-bold text-slate-900 group-hover:text-[#FE7300] transition-colors">
+                                            基于 Syslab 的大规模风场仿真优化算法实现
+                                        </h4>
+                                        <span class="text-xs text-slate-400">2024-02-12</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <span class="px-2 py-0.5 bg-orange-50 text-[#FE7300] text-[10px] font-bold rounded uppercase">技术分享</span>
+                                        <span class="text-[10px] text-slate-400">仿真开发 / 算法优化</span>
+                                    </div>
+                                    <div class="flex items-center gap-6">
+                                        <div class="flex items-center gap-1.5 text-xs text-slate-400">
+                                            <iconify-icon icon="lucide:thumbs-up"></iconify-icon> <span>156</span>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 text-xs text-slate-400">
+                                            <iconify-icon icon="lucide:message-square"></iconify-icon> <span>24</span>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 text-xs text-slate-400">
+                                            <iconify-icon icon="lucide:eye"></iconify-icon> <span>1.2k</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="p-8 hover:bg-slate-50 transition-colors group">
+                                    <div class="flex justify-between items-start mb-2">
+                                        <h4 class="text-base font-bold text-slate-900 group-hover:text-[#FE7300] transition-colors">
+                                            如何解决复杂矩阵运算中的内存溢出问题？
+                                        </h4>
+                                        <span class="text-xs text-slate-400">2024-01-28</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <span class="px-2 py-0.5 bg-blue-50 text-blue-500 text-[10px] font-bold rounded uppercase">提问</span>
+                                        <span class="text-[10px] text-slate-400">矩阵运算 / 性能优化</span>
+                                    </div>
+                                    <div class="flex items-center gap-6">
+                                        <div class="flex items-center gap-1.5 text-xs text-slate-400">
+                                            <iconify-icon icon="lucide:thumbs-up"></iconify-icon> <span>42</span>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 text-xs text-slate-400">
+                                            <iconify-icon icon="lucide:message-square"></iconify-icon> <span>86</span>
+                                        </div>
+                                        <div class="flex items-center gap-1.5 text-xs text-slate-400">
+                                            <iconify-icon icon="lucide:eye"></iconify-icon> <span>840</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6 bg-slate-50 text-center">
+                                <a href="#" class="text-sm font-bold text-[#FE7300] hover:underline">查看全部发布内容</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Column -->
+                    <div class="col-span-12 lg:col-span-4 flex flex-col gap-8">
+                        <!-- Profile Score / Level Card -->
+                        <div class="profile-card p-8 bg-gradient-to-br from-white to-orange-50">
+                            <h3 class="font-bold mb-6">社区活跃等级</h3>
+                            <div class="flex items-end gap-2 mb-4">
+                                <span class="text-4xl font-display font-extrabold text-[#FE7300]">Lvl. 8</span>
+                                <span class="text-sm text-slate-400 mb-1">核心专家</span>
+                            </div>
+                            <div class="h-2 w-full bg-white rounded-full overflow-hidden border border-orange-100">
+                                <div class="h-full bg-[#FE7300]" style="width: 75%"></div>
+                            </div>
+                            <div class="mt-3 flex justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                                <span>Exp 2,450</span>
+                                <span>Next: 3,000</span>
+                            </div>
+                        </div>
+
+                        <!-- Skills Tags Card -->
+                        <div class="profile-card p-8">
+                            <h3 class="font-bold mb-6">擅长领域</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-100 rounded-lg text-xs text-slate-600">MATLAB 仿真</span>
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-100 rounded-lg text-xs text-slate-600">Julia 科学计算</span>
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-100 rounded-lg text-xs text-slate-600">控制系统设计</span>
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-100 rounded-lg text-xs text-slate-600">系统建模</span>
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-100 rounded-lg text-xs text-slate-600">高性能算法</span>
+                                <span class="px-3 py-1 bg-slate-50 border border-slate-100 rounded-lg text-xs text-slate-600">数字孪生</span>
+                            </div>
+                        </div>
+
+                        <!-- Social Links Card -->
+                        <div class="profile-card p-8">
+                            <h3 class="font-bold mb-6">社交媒体</h3>
+                            <div class="flex flex-col gap-4">
+                                <a href="#" class="flex items-center justify-between group">
+                                    <div class="flex items-center gap-3">
+                                        <iconify-icon icon="ri:github-fill" class="text-xl text-slate-400 group-hover:text-slate-900 transition-colors"></iconify-icon>
+                                        <span class="text-sm text-slate-600">Github</span>
+                                    </div>
+                                    <iconify-icon icon="lucide:external-link" class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                                </a>
+                                <a href="#" id="social-linkedin" class="flex items-center justify-between group">
+                                    <div class="flex items-center gap-3">
+                                        <iconify-icon icon="ri:linkedin-box-fill" class="text-xl text-slate-400 group-hover:text-[#0066CC] transition-colors"></iconify-icon>
+                                        <span class="text-sm text-slate-600">LinkedIn</span>
+                                    </div>
+                                    <iconify-icon icon="lucide:external-link" class="text-slate-300 text-sm opacity-0 group-hover:opacity-100 transition-opacity"></iconify-icon>
+                                </a>
+                                <a href="#" id="social-wechat" class="flex items-center justify-between group">
+                                    <div class="flex items-center gap-3">
+                                        <iconify-icon icon="ri:wechat-fill" class="text-xl text-slate-400 group-hover:text-emerald-500 transition-colors"></iconify-icon>
+                                        <span class="text-sm text-slate-600">WeChat</span>
+                                    </div>
+                                    <span class="text-[10px] bg-slate-100 text-slate-400 px-1.5 rounded">已绑定</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Shared Footer -->
+        <!-- component: FooterBar (a4895586-0619-4e9a-b101-76c9948f9b73) -->
+<div v-scope="{ ...{&quot;aboutHref&quot;:&quot;#about&quot;,&quot;teamHref&quot;:&quot;#team&quot;,&quot;contactHref&quot;:&quot;#contact&quot;,&quot;docHref&quot;:&quot;#docs&quot;,&quot;helpHref&quot;:&quot;#help&quot;,&quot;feedbackHref&quot;:&quot;#feedback&quot;,&quot;termsHref&quot;:&quot;#terms&quot;,&quot;privacyHref&quot;:&quot;#privacy&quot;,&quot;icpHref&quot;:&quot;#&quot;,&quot;icpNumber&quot;:&quot;京ICP备202103456号&quot;,&quot;wechatHref&quot;:&quot;#wechat&quot;,&quot;githubHref&quot;:&quot;https://github.com&quot;,&quot;currentYear&quot;:2024}, $emit() {} }">
+<footer class="bg-white border-t border-slate-100 py-16">
+    <div class="max-w-[1440px] mx-auto px-10">
+        <div class="flex flex-col lg:flex-row justify-between gap-12">
+            <div class="max-w-xs">
+                <div class="font-display text-xl font-extrabold mb-4" style="font-family: 'Outfit', sans-serif;">
+                    <span class="text-[#FE7300]">mo</span>hub
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    连接智慧，驱动创新。mohub 是面向未来的专业科学计算社区与协作平台。
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap gap-x-16 gap-y-10">
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">关于平台</h4>
+                    <a :href="aboutHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">了解 mohub</a>
+                    <a :href="teamHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">加入我们</a>
+                    <a :href="contactHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">联系支持</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">社区资源</h4>
+                    <a :href="docHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">技术文档</a>
+                    <a :href="helpHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">帮助中心</a>
+                    <a :href="feedbackHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">反馈建议</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">法律合规</h4>
+                    <a :href="termsHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">服务协议</a>
+                    <a :href="privacyHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">隐私协议</a>
+                    <a :href="icpHref" class="text-sm text-slate-500">{{ icpNumber }}</a>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+                <a :href="wechatHref" class="w-10 h-10 flex items-center justify-center bg-slate-50 rounded-full text-slate-400 hover:text-emerald-500 hover:bg-emerald-50 transition-all">
+                    <iconify-icon icon="ri:wechat-fill" class="text-2xl"></iconify-icon>
+                </a>
+                <a :href="githubHref" class="w-10 h-10 flex items-center justify-center bg-slate-50 rounded-full text-slate-400 hover:text-slate-900 hover:bg-slate-200 transition-all">
+                    <iconify-icon icon="ri:github-fill" class="text-2xl"></iconify-icon>
+                </a>
+            </div>
+        </div>
+        <div class="mt-16 pt-8 border-t border-slate-50 text-center text-slate-400 text-[12px]">
+            <p>© {{ currentYear }} mohub Inc. 保留所有权利。</p>
+        </div>
+    </div>
+</footer>
+</div>
+<!-- /component: FooterBar (a4895586-0619-4e9a-b101-76c9948f9b73) -->
+    </div>
+</body>
+</html>

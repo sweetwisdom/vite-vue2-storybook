@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import AboutView from '../views/AboutView.vue'
 import HomeView from '../views/HomeView.vue'
+import TechView from '../views/TechView.vue'
 
 Vue.use(VueRouter)
 
@@ -12,15 +12,15 @@ const routes = [
     name: 'home',
     component: HomeView,
     meta: {
-      title: 'Future Atlas | 首页',
+      title: 'mohub | 首页',
     },
   },
   {
-    path: '/about',
-    name: 'about',
-    component: AboutView,
+    path: '/tech',
+    name: 'tech',
+    component: TechView,
     meta: {
-      title: 'Future Atlas | 关于',
+      title: 'mohub | 技术交流',
     },
   },
 ]

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术交流 - mohub 专业科学计算协作云平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @import url('https://api.fontshare.com/v2/css?f[]=outfit@400,500,600,700,800&f[]=satoshi@400,500,700&display=swap');
+
+        :root {
+            --brand-orange: #FE7300;
+            --link-blue: #3B82F6;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --bg-page: #FFFFFF;
+            --bg-alt: #F8FAFC;
+        }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: var(--bg-alt);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-display {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .post-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border-bottom: 1px solid #F1F5F9;
+        }
+
+        .post-card:last-child {
+            border-bottom: none;
+        }
+
+        .post-title:hover {
+            color: var(--link-blue);
+            text-decoration: underline;
+        }
+
+        .sidebar-item-active {
+            color: var(--brand-orange);
+            background-color: #FFF7ED;
+            border-right: 3px solid var(--brand-orange);
+        }
+
+        .btn-primary {
+            background-color: var(--brand-orange);
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #E66800;
+            transform: translateY(-1px);
+        }
+
+        .tab-active {
+            color: var(--brand-orange);
+            border-bottom: 2px solid var(--brand-orange);
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+  <style>sd-component { display: block; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <!-- Navigation Component -->
+        <!-- component: NavigationBar (f3e0ad58-b172-4b4c-baf0-da1baa10d989) -->
+<div v-scope="{ ...{&quot;activeItem&quot;:&quot;tech&quot;,&quot;logoHref&quot;:&quot;#&quot;,&quot;homeHref&quot;:&quot;#&quot;,&quot;techHref&quot;:&quot;https://draft-5f582e86-efe2-4366-8e8a-052082181655.preview.superdesign.dev&quot;,&quot;shareHref&quot;:&quot;#&quot;,&quot;uniHref&quot;:&quot;#&quot;,&quot;compHref&quot;:&quot;#&quot;,&quot;aiHref&quot;:&quot;#&quot;,&quot;showNotificationBadge&quot;:true,&quot;userAvatarUrl&quot;:&quot;https://api.dicebear.com/7.x/notionists/svg?seed=Felix&quot;}, $emit() {} }">
+<header class="sticky top-0 z-50 bg-white border-b border-slate-100">
+    <div class="max-w-[1440px] mx-auto px-10 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-10">
+            <a :href="logoHref" class="flex items-center gap-2">
+                <span class="font-display text-2xl font-extrabold tracking-tight" style="font-family: 'Outfit', sans-serif;">
+                    <span class="text-[#FE7300]">mo</span>hub
+                </span>
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 h-full">
+                <a :href="homeHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'home' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    首页
+                    <div v-if="activeItem === 'home'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="techHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'tech' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    技术交流
+                    <div v-if="activeItem === 'tech'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="shareHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'share' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    众创共享
+                    <div v-if="activeItem === 'share'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="uniHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'uni' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    高校专区
+                    <div v-if="activeItem === 'uni'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="compHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'comp' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    竞赛
+                    <div v-if="activeItem === 'comp'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="aiHref" class="relative font-medium transition-colors hover:text-slate-900 flex items-center gap-1.5" :class="activeItem === 'ai' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    <iconify-icon icon="lucide:sparkles" :class="activeItem === 'ai' ? 'text-[#FE7300]' : 'text-[#FE7300]'"></iconify-icon>
+                    智能问答助手
+                    <div v-if="activeItem === 'ai'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-1">
+                <button @click="$emit('search')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all">
+                    <iconify-icon icon="lucide:search" class="text-xl"></iconify-icon>
+                </button>
+                <button @click="$emit('openShelf')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all">
+                    <iconify-icon icon="lucide:library" class="text-xl"></iconify-icon>
+                </button>
+                <button @click="$emit('openNotifications')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all relative">
+                    <iconify-icon icon="lucide:bell" class="text-xl"></iconify-icon>
+                    <span v-if="showNotificationBadge" class="absolute top-2 right-2 w-1.5 h-1.5 bg-[#FE7300] rounded-full ring-2 ring-white"></span>
+                </button>
+            </div>
+            <div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
+            <div @click="$emit('toggleUserMenu')" class="flex items-center cursor-pointer group">
+                <div class="w-9 h-9 rounded-full bg-slate-50 border border-slate-100 overflow-hidden">
+                    <img :src="userAvatarUrl" alt="User Avatar" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</div>
+<!-- /component: NavigationBar (f3e0ad58-b172-4b4c-baf0-da1baa10d989) -->
+
+        <!-- Main Content Wrapper -->
+        <div class="flex-1 max-w-[1440px] mx-auto w-full px-10 py-8 flex gap-8">
+            
+            <!-- Left Sidebar (Menu) -->
+            <aside class="w-60 flex-shrink-0">
+                <div class="space-y-8">
+                    <!-- Columns Group -->
+                    <section>
+                        <h3 class="font-display text-lg font-bold mb-4 flex items-center gap-2">
+                            <iconify-icon icon="lucide:grid-2x2" class="text-slate-400"></iconify-icon>
+                            专栏
+                        </h3>
+                        <nav class="flex flex-col space-y-1">
+                            <a href="#" id="side-syslab-link" class="px-4 py-2.5 rounded-lg text-sm font-medium transition-all flex justify-between items-center group sidebar-item-active">
+                                Syslab 基础平台
+                            </a>
+                            <a href="#" id="side-julia-link" class="px-4 py-2.5 rounded-lg text-sm text-slate-500 hover:bg-slate-50 font-medium transition-all">
+                                Julia 语言
+                            </a>
+                            <a href="#" id="side-syspro-link" class="px-4 py-2.5 rounded-lg text-sm text-slate-500 hover:bg-slate-50 font-medium transition-all">
+                                Sysprorer 基础平台
+                            </a>
+                            <a href="#" id="side-modelica-link" class="px-4 py-2.5 rounded-lg text-sm text-slate-500 hover:bg-slate-50 font-medium transition-all">
+                                Modelica 语言
+                            </a>
+                            <a href="#" id="side-sysblock-link" class="px-4 py-2.5 rounded-lg text-sm text-slate-500 hover:bg-slate-50 font-medium transition-all">
+                                Sysblock 基础平台
+                            </a>
+                            <a href="#" id="side-tools-link" class="px-4 py-2.5 rounded-lg text-sm text-slate-500 hover:bg-slate-50 font-medium transition-all">
+                                工具箱
+                            </a>
+                        </nav>
+                    </section>
+
+                    <!-- Tags Group -->
+                    <section>
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-display text-lg font-bold flex items-center gap-2">
+                                <iconify-icon icon="lucide:tags" class="text-slate-400"></iconify-icon>
+                                标签
+                            </h3>
+                            <button id="tags-expand-btn" class="text-[12px] text-[#FE7300] hover:underline font-medium">全部</button>
+                        </div>
+                        <nav class="flex flex-wrap gap-2">
+                            <a href="#" id="tag-blue-cup-link" class="px-3 py-1.5 bg-slate-100 rounded-full text-xs text-slate-600 hover:bg-orange-50 hover:text-[#FE7300] transition-colors">蓝桥杯</a>
+                            <a href="#" id="tag-drone-link" class="px-3 py-1.5 bg-slate-100 rounded-full text-xs text-slate-600 hover:bg-orange-50 hover:text-[#FE7300] transition-colors">智能无人系统</a>
+                            <a href="#" id="tag-install-link" class="px-3 py-1.5 bg-slate-100 rounded-full text-xs text-slate-600 hover:bg-orange-50 hover:text-[#FE7300] transition-colors">安装激活</a>
+                            <a href="#" id="tag-modeling-link" class="px-3 py-1.5 bg-slate-100 rounded-full text-xs text-slate-600 hover:bg-orange-50 hover:text-[#FE7300] transition-colors">系统建模</a>
+                            <a href="#" id="tag-computing-link" class="px-3 py-1.5 bg-slate-100 rounded-full text-xs text-slate-600 hover:bg-orange-50 hover:text-[#FE7300] transition-colors">科学计算</a>
+                            <a href="#" id="tag-ai-link" class="px-3 py-1.5 bg-slate-100 rounded-full text-xs text-slate-600 hover:bg-orange-50 hover:text-[#FE7300] transition-colors">AI</a>
+                            <a href="#" id="tag-robot-link" class="px-3 py-1.5 bg-slate-100 rounded-full text-xs text-slate-600 hover:bg-orange-50 hover:text-[#FE7300] transition-colors">工业机器人</a>
+                            <a href="#" id="tag-car-link" class="px-3 py-1.5 bg-slate-100 rounded-full text-xs text-slate-600 hover:bg-orange-50 hover:text-[#FE7300] transition-colors">汽车</a>
+                        </nav>
+                    </section>
+                </div>
+            </aside>
+
+            <!-- Center Main Feed -->
+            <main class="flex-1 bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                <!-- Header Filters -->
+                <div class="px-6 py-4 border-b border-slate-100 flex flex-col gap-4">
+                    <div class="relative">
+                        <iconify-icon icon="lucide:search" class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></iconify-icon>
+                        <input type="text" placeholder="搜索感兴趣的问题或模型..." class="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#FE7300]/20 focus:border-[#FE7300] transition-all">
+                    </div>
+                    <div class="flex items-center gap-8">
+                        <button id="tab-latest" class="tab-active py-2 text-sm font-semibold tracking-wide">最新</button>
+                        <button id="tab-rec" class="text-slate-500 hover:text-slate-900 py-2 text-sm font-semibold tracking-wide transition-colors">推荐</button>
+                        <button id="tab-hot" class="text-slate-500 hover:text-slate-900 py-2 text-sm font-semibold tracking-wide flex items-center gap-1.5 transition-colors">
+                            热门 <iconify-icon icon="lucide:flame" class="text-orange-500"></iconify-icon>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Posts List -->
+                <div class="flex-1 overflow-y-auto scrollbar-hide">
+                    <!-- Post 1 -->
+                    <article class="post-card p-6 flex flex-col gap-4 bg-white hover:bg-slate-50/50 transition-colors">
+                        <div class="flex items-center gap-2">
+                            <a href="https://draft-eff4deb7-c867-458d-8976-eff5c80fcca5.preview.superdesign.dev" id="post-1-title-link" class="post-title font-display text-xl font-bold text-slate-900 leading-tight">
+                                MWORKS 2026a 上线！星火计划全年免费试用开启
+                            </a>
+                            <span class="px-2 py-0.5 bg-[#FE7300] text-white text-[10px] font-bold rounded">主题活动</span>
+                        </div>
+                        <p class="text-slate-500 text-sm leading-relaxed line-clamp-2">
+                            MWORKS 2026a 已正式上线同元软控官网，带来更强性能、更全能力、更优体验。欢迎前往下载使用，下载地址："https://www.tongyuan.cc/download"
+                        </p>
+                        <div class="flex items-center justify-between mt-1">
+                            <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-1.5">
+                                    <img src="https://api.dicebear.com/7.x/shapes/svg?seed=brand" class="w-5 h-5 rounded-full">
+                                    <span class="text-xs text-slate-500">MoHub</span>
+                                </div>
+                                <span class="text-xs text-slate-400">2026-02-11</span>
+                                <div class="flex items-center gap-3 text-slate-400">
+                                    <div class="flex items-center gap-1 text-[11px]"><iconify-icon icon="lucide:thumbs-up"></iconify-icon> 0</div>
+                                    <div class="flex items-center gap-1 text-[11px]"><iconify-icon icon="lucide:eye"></iconify-icon> 55</div>
+                                    <div class="flex items-center gap-1 text-[11px]"><iconify-icon icon="lucide:message-square"></iconify-icon> 0</div>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="px-2 py-0.5 bg-orange-50 text-[#FE7300] text-[10px] font-medium rounded">系统建模</span>
+                                <span class="px-2 py-0.5 bg-orange-50 text-[#FE7300] text-[10px] font-medium rounded">科学计算</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 2 -->
+                    <article class="post-card p-6 flex flex-col gap-4 bg-white hover:bg-slate-50/50 transition-colors">
+                        <div class="flex items-center gap-2">
+                            <a href="#" id="post-2-title-link" class="post-title font-display text-xl font-bold text-slate-900 leading-tight">
+                                这篇一次讲透！MWORKS 2026a 亮点全集
+                            </a>
+                            <span class="px-2 py-0.5 bg-blue-500 text-white text-[10px] font-bold rounded">技术分享</span>
+                        </div>
+                        <p class="text-slate-500 text-sm leading-relaxed line-clamp-2">
+                            发布概览：历经五年持续的工程实践与打磨，CPS一体化平台已经成型。全新发布的 MWORKS 2026a 实现了从“功能可替代”到“体验更卓越”的跨越。
+                        </p>
+                        <div class="flex items-center justify-between mt-1">
+                            <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-1.5">
+                                    <img src="https://api.dicebear.com/7.x/notionists/svg?seed=user1" class="w-5 h-5 rounded-full">
+                                    <span class="text-xs text-slate-500">同元技术专家</span>
+                                </div>
+                                <span class="text-xs text-slate-400">2026-02-09</span>
+                                <div class="flex items-center gap-3 text-slate-400">
+                                    <div class="flex items-center gap-1 text-[11px]"><iconify-icon icon="lucide:thumbs-up"></iconify-icon> 12</div>
+                                    <div class="flex items-center gap-1 text-[11px]"><iconify-icon icon="lucide:eye"></iconify-icon> 128</div>
+                                    <div class="flex items-center gap-1 text-[11px]"><iconify-icon icon="lucide:message-square"></iconify-icon> 5</div>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="px-2 py-0.5 bg-orange-50 text-[#FE7300] text-[10px] font-medium rounded">Syslab</span>
+                                <span class="px-2 py-0.5 bg-orange-50 text-[#FE7300] text-[10px] font-medium rounded">亮点前瞻</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Post 3 -->
+                    <article class="post-card p-6 flex flex-col gap-4 bg-white hover:bg-slate-50/50 transition-colors">
+                        <div class="flex items-center gap-2">
+                            <a href="#" id="post-3-title-link" class="post-title font-display text-xl font-bold text-slate-900 leading-tight">
+                                MWORKS 帮助手册优化建议公开征集
+                            </a>
+                            <span class="px-2 py-0.5 bg-[#FE7300] text-white text-[10px] font-bold rounded">公告</span>
+                        </div>
+                        <p class="text-slate-500 text-sm leading-relaxed line-clamp-2">
+                            亲爱的 MWORKS 用户：同元软控一直致力于为大家提供更优质的产品和服务。近期随着新版本上线，我们开启了手册优化建议征集活动。
+                        </p>
+                        <div class="flex items-center justify-between mt-1">
+                            <div class="flex items-center gap-4">
+                                <div class="flex items-center gap-1.5">
+                                    <img src="https://api.dicebear.com/7.x/shapes/svg?seed=brand" class="w-5 h-5 rounded-full">
+                                    <span class="text-xs text-slate-500">MoHub</span>
+                                </div>
+                                <span class="text-xs text-slate-400">2025-08-27</span>
+                                <div class="flex items-center gap-3 text-slate-400">
+                                    <div class="flex items-center gap-1 text-[11px]"><iconify-icon icon="lucide:thumbs-up"></iconify-icon> 8</div>
+                                    <div class="flex items-center gap-1 text-[11px]"><iconify-icon icon="lucide:eye"></iconify-icon> 156</div>
+                                    <div class="flex items-center gap-1 text-[11px]"><iconify-icon icon="lucide:message-square"></iconify-icon> 2</div>
+                                </div>
+                            </div>
+                            <div class="flex gap-2">
+                                <span class="px-2 py-0.5 bg-orange-50 text-[#FE7300] text-[10px] font-medium rounded">帮助文档</span>
+                                <span class="px-2 py-0.5 bg-orange-50 text-[#FE7300] text-[10px] font-medium rounded">建议反馈</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </main>
+
+            <!-- Right Sidebar -->
+            <aside class="w-[320px] flex-shrink-0 flex flex-col gap-6">
+                <!-- Create Post CTA -->
+                <a href="https://draft-619d97e9-a3d7-4569-bc44-b7654c818eac.preview.superdesign.dev" id="cta-create-post" class="btn-primary h-[52px] flex items-center justify-center gap-2 text-white font-bold rounded-xl shadow-lg shadow-orange-500/10 group transition-all">
+                    <iconify-icon icon="lucide:edit-3" class="text-xl transition-transform group-hover:scale-110"></iconify-icon>
+                    我要发帖
+                </a>
+
+                <!-- Resource Center -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 class="font-display font-bold flex items-center gap-2">
+                            <iconify-icon icon="lucide:file-text" class="text-orange-500"></iconify-icon>
+                            资料中心
+                        </h4>
+                        <a href="#" id="resource-more-link" class="text-xs text-slate-400 hover:text-[#FE7300]">查看更多 ></a>
+                    </div>
+                    <ul class="space-y-4">
+                        <li><a href="#" id="res-link-1" class="text-sm text-slate-600 hover:text-[#FE7300] flex items-center gap-2 transition-colors"><iconify-icon icon="lucide:link" class="text-slate-300 text-xs"></iconify-icon> MWORKS 平台介绍</a></li>
+                        <li><a href="#" id="res-link-2" class="text-sm text-slate-600 hover:text-[#FE7300] flex items-center gap-2 transition-colors"><iconify-icon icon="lucide:link" class="text-slate-300 text-xs"></iconify-icon> 同元软控产品册、企业册及案例册</a></li>
+                        <li><a href="#" id="res-link-3" class="text-sm text-slate-600 hover:text-[#FE7300] flex items-center gap-2 transition-colors"><iconify-icon icon="lucide:link" class="text-slate-300 text-xs"></iconify-icon> MWORKS 与 MATLAB 功能对照</a></li>
+                        <li><a href="#" id="res-link-4" class="text-sm text-slate-600 hover:text-[#FE7300] flex items-center gap-2 transition-colors"><iconify-icon icon="lucide:link" class="text-slate-300 text-xs"></iconify-icon> 培训课程配套材料</a></li>
+                        <li><a href="#" id="res-link-5" class="text-sm text-slate-600 hover:text-[#FE7300] flex items-center gap-2 transition-colors"><iconify-icon icon="lucide:link" class="text-slate-300 text-xs"></iconify-icon> MWORKS 开放架构资源</a></li>
+                    </ul>
+                </div>
+
+                <!-- FAQ -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h4 class="font-display font-bold flex items-center gap-2">
+                            <iconify-icon icon="lucide:help-circle" class="text-orange-500"></iconify-icon>
+                            FAQ
+                        </h4>
+                        <a href="#" id="faq-more-link" class="text-xs text-slate-400 hover:text-[#FE7300]">查看更多 ></a>
+                    </div>
+                    <ul class="space-y-4">
+                        <li><a href="#" id="faq-item-1" class="text-[13px] text-slate-600 hover:text-slate-900 flex items-start gap-1 leading-relaxed"><span class="text-slate-300">#</span> 基于 ParaView 的批量格式转换指南</a></li>
+                        <li><a href="#" id="faq-item-2" class="text-[13px] text-slate-600 hover:text-slate-900 flex items-start gap-1 leading-relaxed"><span class="text-slate-300">#</span> Syslab 有没有快捷键调整界面字体...</a></li>
+                        <li><a href="#" id="faq-item-3" class="text-[13px] text-slate-600 hover:text-slate-900 flex items-start gap-1 leading-relaxed"><span class="text-slate-300">#</span> 生成求解器失败，生成 MWSolver...</a></li>
+                        <li><a href="#" id="faq-item-4" class="text-[13px] text-slate-600 hover:text-slate-900 flex items-start gap-1 leading-relaxed"><span class="text-slate-300">#</span> 如何下载 Linux 版本的 MWORKS?</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contributors -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-6">
+                    <h4 class="font-display font-bold mb-6 flex items-center gap-2">
+                        <iconify-icon icon="lucide:award" class="text-orange-500"></iconify-icon>
+                        贡献者排行 (Top 10)
+                    </h4>
+                    <div class="space-y-5">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 flex items-center justify-center bg-orange-500 text-white rounded text-[11px] font-bold">1</div>
+                                <a href="https://draft-6de11914-8110-415e-8c98-448e28232069.preview.superdesign.dev" id="contrib-1-link" class="text-sm font-medium text-slate-700 hover:text-[#FE7300]">Felix Chen</a>
+                            </div>
+                            <span class="text-[11px] font-bold text-slate-400">2,850 pts</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 flex items-center justify-center bg-orange-400 text-white rounded text-[11px] font-bold">2</div>
+                                <a href="#" id="contrib-2-link" class="text-sm font-medium text-slate-700 hover:text-[#FE7300]">MW_Expert</a>
+                            </div>
+                            <span class="text-[11px] font-bold text-slate-400">2,120 pts</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-6 h-6 flex items-center justify-center bg-orange-300 text-white rounded text-[11px] font-bold">3</div>
+                                <a href="#" id="contrib-3-link" class="text-sm font-medium text-slate-700 hover:text-[#FE7300]">Algorithm_King</a>
+                            </div>
+                            <span class="text-[11px] font-bold text-slate-400">1,980 pts</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Footer Component -->
+        <!-- component: FooterBar (a4895586-0619-4e9a-b101-76c9948f9b73) -->
+<div v-scope="{ ...{&quot;aboutHref&quot;:&quot;#about&quot;,&quot;teamHref&quot;:&quot;#team&quot;,&quot;contactHref&quot;:&quot;#contact&quot;,&quot;docHref&quot;:&quot;#docs&quot;,&quot;helpHref&quot;:&quot;#help&quot;,&quot;feedbackHref&quot;:&quot;#feedback&quot;,&quot;termsHref&quot;:&quot;#terms&quot;,&quot;privacyHref&quot;:&quot;#privacy&quot;,&quot;icpHref&quot;:&quot;#&quot;,&quot;icpNumber&quot;:&quot;京ICP备202103456号&quot;,&quot;wechatHref&quot;:&quot;#wechat&quot;,&quot;githubHref&quot;:&quot;https://github.com&quot;,&quot;currentYear&quot;:2024}, $emit() {} }">
+<footer class="bg-white border-t border-slate-100 py-16">
+    <div class="max-w-[1440px] mx-auto px-10">
+        <div class="flex flex-col lg:flex-row justify-between gap-12">
+            <div class="max-w-xs">
+                <div class="font-display text-xl font-extrabold mb-4" style="font-family: 'Outfit', sans-serif;">
+                    <span class="text-[#FE7300]">mo</span>hub
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    连接智慧，驱动创新。mohub 是面向未来的专业科学计算社区与协作平台。
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap gap-x-16 gap-y-10">
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">关于平台</h4>
+                    <a :href="aboutHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">了解 mohub</a>
+                    <a :href="teamHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">加入我们</a>
+                    <a :href="contactHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">联系支持</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">社区资源</h4>
+                    <a :href="docHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">技术文档</a>
+                    <a :href="helpHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">帮助中心</a>
+                    <a :href="feedbackHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">反馈建议</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">法律合规</h4>
+                    <a :href="termsHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">服务协议</a>
+                    <a :href="privacyHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">隐私协议</a>
+                    <a :href="icpHref" class="text-sm text-slate-500">{{ icpNumber }}</a>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+                <a :href="wechatHref" class="w-10 h-10 flex items-center justify-center bg-slate-50 rounded-full text-slate-400 hover:text-emerald-500 hover:bg-emerald-50 transition-all">
+                    <iconify-icon icon="ri:wechat-fill" class="text-2xl"></iconify-icon>
+                </a>
+                <a :href="githubHref" class="w-10 h-10 flex items-center justify-center bg-slate-50 rounded-full text-slate-400 hover:text-slate-900 hover:bg-slate-200 transition-all">
+                    <iconify-icon icon="ri:github-fill" class="text-2xl"></iconify-icon>
+                </a>
+            </div>
+        </div>
+        <div class="mt-16 pt-8 border-t border-slate-50 text-center text-slate-400 text-[12px]">
+            <p>© {{ currentYear }} mohub Inc. 保留所有权利。</p>
+        </div>
+    </div>
+</footer>
+</div>
+<!-- /component: FooterBar (a4895586-0619-4e9a-b101-76c9948f9b73) -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>默认仓库 - 仓库浏览 - mohub 专业科学计算协作云平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @import url('https://api.fontshare.com/v2/css?f[]=outfit@400,500,600,700,800&f[]=satoshi@400,500,700&display=swap');
+
+        :root {
+            --brand-orange: #FE7300;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --bg-page: #FFFFFF;
+            --border-color: #E2E8F0;
+        }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-display {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Custom Focus Styles */
+        .focus-ring-orange:focus-within {
+            border-color: var(--brand-orange);
+            box-shadow: 0 0 0 3px rgba(254, 115, 0, 0.1);
+        }
+
+        /* Tab Styles */
+        .tab-item {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .tab-item::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+        }
+        .tab-item.active {
+            color: var(--brand-orange);
+            font-weight: 600;
+        }
+        .tab-item.active::after {
+            background-color: var(--brand-orange);
+        }
+    </style>
+  <style>sd-component { display: block; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col">
+        <!-- Global Navigation -->
+        <!-- component: NavigationBar (f3e0ad58-b172-4b4c-baf0-da1baa10d989) -->
+<div v-scope="{ ...{&quot;activeItem&quot;:&quot;repository&quot;,&quot;logoHref&quot;:&quot;#&quot;,&quot;homeHref&quot;:&quot;#&quot;,&quot;techHref&quot;:&quot;#&quot;,&quot;shareHref&quot;:&quot;#&quot;,&quot;uniHref&quot;:&quot;#&quot;,&quot;compHref&quot;:&quot;#&quot;,&quot;aiHref&quot;:&quot;#&quot;,&quot;showNotificationBadge&quot;:true,&quot;userAvatarUrl&quot;:&quot;https://api.dicebear.com/7.x/notionists/svg?seed=Felix&quot;}, $emit() {} }">
+<header class="sticky top-0 z-50 bg-white border-b border-slate-100">
+    <div class="max-w-[1440px] mx-auto px-10 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-10">
+            <a :href="logoHref" class="flex items-center gap-2">
+                <span class="font-display text-2xl font-extrabold tracking-tight" style="font-family: 'Outfit', sans-serif;">
+                    <span class="text-[#FE7300]">mo</span>hub
+                </span>
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 h-full">
+                <a :href="homeHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'home' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    首页
+                    <div v-if="activeItem === 'home'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="techHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'tech' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    技术交流
+                    <div v-if="activeItem === 'tech'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="shareHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'share' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    众创共享
+                    <div v-if="activeItem === 'share'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="uniHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'uni' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    高校专区
+                    <div v-if="activeItem === 'uni'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="compHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'comp' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    竞赛
+                    <div v-if="activeItem === 'comp'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="aiHref" class="relative font-medium transition-colors hover:text-slate-900 flex items-center gap-1.5" :class="activeItem === 'ai' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    <iconify-icon icon="lucide:sparkles" :class="activeItem === 'ai' ? 'text-[#FE7300]' : 'text-[#FE7300]'"></iconify-icon>
+                    智能问答助手
+                    <div v-if="activeItem === 'ai'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-1">
+                <button @click="$emit('search')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all">
+                    <iconify-icon icon="lucide:search" class="text-xl"></iconify-icon>
+                </button>
+                <button @click="$emit('openShelf')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all">
+                    <iconify-icon icon="lucide:library" class="text-xl"></iconify-icon>
+                </button>
+                <button @click="$emit('openNotifications')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all relative">
+                    <iconify-icon icon="lucide:bell" class="text-xl"></iconify-icon>
+                    <span v-if="showNotificationBadge" class="absolute top-2 right-2 w-1.5 h-1.5 bg-[#FE7300] rounded-full ring-2 ring-white"></span>
+                </button>
+            </div>
+            <div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
+            <div @click="$emit('toggleUserMenu')" class="flex items-center cursor-pointer group">
+                <div class="w-9 h-9 rounded-full bg-slate-50 border border-slate-100 overflow-hidden">
+                    <img :src="userAvatarUrl" alt="User Avatar" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</div>
+<!-- /component: NavigationBar (f3e0ad58-b172-4b4c-baf0-da1baa10d989) -->
+
+        <!-- Main Content Wrapper -->
+        <main class="flex-1 w-full">
+            <!-- Top Meta Info Header -->
+            <div class="border-b border-slate-200 bg-white">
+                <div class="max-w-[1440px] mx-auto px-6 md:px-10 pt-10 pb-6">
+                    <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                        <!-- Left: Info -->
+                        <div class="space-y-4">
+                            <!-- Breadcrumbs -->
+                            <nav class="flex items-center text-sm text-slate-500">
+                                <a href="#" id="link-user-profile" class="hover:text-slate-900 transition-colors">wechat-6420</a>
+                                <span class="mx-2">/</span>
+                                <a href="#" id="link-repo-root" class="hover:text-slate-900 transition-colors font-medium">HelloModelica</a>
+                            </nav>
+                            
+                            <!-- Title & Desc -->
+                            <div class="space-y-1">
+                                <div class="flex items-center gap-3">
+                                    <h1 class="font-display text-3xl font-bold text-slate-900">默认仓库</h1>
+                                    <iconify-icon icon="lucide:badge-check" class="text-blue-500 text-xl" title="已验证"></iconify-icon>
+                                </div>
+                                <p class="text-slate-500 text-sm">我的第一个仓库</p>
+                            </div>
+                        </div>
+
+                        <!-- Right: Actions -->
+                        <div class="flex flex-wrap items-center gap-3">
+                            <button id="btn-client-open" class="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 hover:bg-slate-50 hover:border-slate-300 text-slate-700 text-sm font-medium rounded-xl transition-all shadow-sm hover:-translate-y-0.5">
+                                客户端打开
+                                <iconify-icon icon="lucide:chevron-down" class="text-slate-400"></iconify-icon>
+                            </button>
+                            <button id="btn-download-repo" class="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 hover:bg-slate-50 hover:border-slate-300 text-slate-700 text-sm font-medium rounded-xl transition-all shadow-sm hover:-translate-y-0.5">
+                                <iconify-icon icon="lucide:download" class="text-lg"></iconify-icon>
+                                下载仓库
+                            </button>
+                            <button id="btn-clone-repo" class="flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 hover:bg-slate-50 hover:border-slate-300 text-slate-700 text-sm font-medium rounded-xl transition-all shadow-sm hover:-translate-y-0.5">
+                                克隆
+                                <iconify-icon icon="lucide:chevron-down" class="text-slate-400"></iconify-icon>
+                            </button>
+                            <button id="btn-cloud-open" class="flex items-center gap-2 px-5 py-2 bg-[#FE7300] hover:bg-[#E66800] text-white border border-[#FE7300] text-sm font-bold rounded-xl transition-all shadow-md shadow-orange-500/20 hover:-translate-y-0.5">
+                                云端打开
+                                <span class="w-px h-4 bg-orange-400/50 mx-1"></span>
+                                <iconify-icon icon="lucide:chevron-down"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Content Area (Tabs + File List) -->
+            <div class="max-w-[1440px] mx-auto px-6 md:px-10 py-6">
+                <!-- Tabs -->
+                <div class="border-b border-slate-200 mb-6">
+                    <nav class="flex gap-8 overflow-x-auto hide-scrollbar">
+                        <button id="tab-intro" class="tab-item flex items-center gap-2 pb-3 px-1 text-slate-500 hover:text-slate-800 text-sm font-medium whitespace-nowrap">
+                            <iconify-icon icon="lucide:file-text" class="text-lg"></iconify-icon>
+                            介绍
+                        </button>
+                        <button id="tab-model" class="tab-item flex items-center gap-2 pb-3 px-1 text-slate-500 hover:text-slate-800 text-sm font-medium whitespace-nowrap">
+                            <iconify-icon icon="lucide:box" class="text-lg"></iconify-icon>
+                            模型
+                        </button>
+                        <button id="tab-files" class="tab-item active flex items-center gap-2 pb-3 px-1 hover:text-slate-800 text-sm whitespace-nowrap">
+                            <iconify-icon icon="lucide:folder-open" class="text-lg"></iconify-icon>
+                            文件
+                        </button>
+                        <button id="tab-deps" class="tab-item flex items-center gap-2 pb-3 px-1 text-slate-500 hover:text-slate-800 text-sm font-medium whitespace-nowrap">
+                            <iconify-icon icon="lucide:link" class="text-lg"></iconify-icon>
+                            依赖
+                        </button>
+                        <button id="tab-commits" class="tab-item flex items-center gap-2 pb-3 px-1 text-slate-500 hover:text-slate-800 text-sm font-medium whitespace-nowrap">
+                            <iconify-icon icon="lucide:git-commit" class="text-lg"></iconify-icon>
+                            版本
+                        </button>
+                        <button id="tab-settings" class="tab-item flex items-center gap-2 pb-3 px-1 text-slate-500 hover:text-slate-800 text-sm font-medium whitespace-nowrap">
+                            <iconify-icon icon="lucide:settings" class="text-lg"></iconify-icon>
+                            管理
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- File Table Section -->
+                <div class="space-y-4">
+                    <!-- Toolbar -->
+                    <div class="flex items-center justify-between">
+                        <!-- Optional left toolbar items (e.g. branch selector) could go here -->
+                        <div></div>
+                        
+                        <!-- Right Toolbar -->
+                        <div class="flex items-center gap-3">
+                            <!-- Sort Dropdown -->
+                            <button id="btn-sort" class="flex items-center gap-2 px-3 py-1.5 text-sm text-slate-600 hover:bg-slate-100 rounded-lg transition-colors border border-transparent hover:border-slate-200">
+                                排序: <span class="font-medium text-slate-900">最新</span>
+                                <iconify-icon icon="lucide:chevron-down" class="text-slate-400"></iconify-icon>
+                            </button>
+                            
+                            <!-- View Switcher -->
+                            <div class="flex items-center bg-slate-100 p-0.5 rounded-lg border border-slate-200">
+                                <button id="btn-view-list" class="p-1.5 bg-white text-slate-900 rounded shadow-sm flex items-center justify-center">
+                                    <iconify-icon icon="lucide:list" class="text-lg"></iconify-icon>
+                                </button>
+                                <button id="btn-view-grid" class="p-1.5 text-slate-500 hover:text-slate-700 rounded flex items-center justify-center transition-colors">
+                                    <iconify-icon icon="lucide:layout-grid" class="text-lg"></iconify-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- The Table -->
+                    <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-sm">
+                        <!-- Table Header -->
+                        <div class="grid grid-cols-[minmax(250px,2fr)_120px_minmax(200px,3fr)_120px] gap-4 px-6 py-3 bg-slate-50 border-b border-slate-200 text-sm font-medium text-slate-500">
+                            <div>文件名</div>
+                            <div>文件大小</div>
+                            <div>提交信息</div>
+                            <div class="text-right">提交时间</div>
+                        </div>
+
+                        <!-- Table Body -->
+                        <div class="flex flex-col">
+                            <!-- Row 1 -->
+                            <div class="grid grid-cols-[minmax(250px,2fr)_120px_minmax(200px,3fr)_120px] gap-4 px-6 py-3.5 items-center border-b border-slate-100 hover:bg-[#F8FAFC] transition-colors cursor-pointer group">
+                                <div class="flex items-center gap-3">
+                                    <iconify-icon icon="lucide:file-code-2" class="text-xl text-blue-500"></iconify-icon>
+                                    <span class="font-medium text-slate-900 group-hover:text-blue-600 transition-colors">HelloModelica.mo</span>
+                                </div>
+                                <div class="text-sm text-slate-500">83.91 KB</div>
+                                <div class="text-sm text-slate-500 truncate group-hover:text-slate-700 transition-colors">init repo</div>
+                                <div class="text-sm text-slate-500 text-right">1 天前</div>
+                            </div>
+
+                            <!-- Row 2 -->
+                            <div class="grid grid-cols-[minmax(250px,2fr)_120px_minmax(200px,3fr)_120px] gap-4 px-6 py-3.5 items-center border-b border-slate-100 hover:bg-[#F8FAFC] transition-colors cursor-pointer group">
+                                <div class="flex items-center gap-3">
+                                    <iconify-icon icon="lucide:file-text" class="text-xl text-slate-400"></iconify-icon>
+                                    <span class="font-medium text-slate-900 group-hover:text-blue-600 transition-colors">README.md</span>
+                                </div>
+                                <div class="text-sm text-slate-500">314 B</div>
+                                <div class="text-sm text-slate-500 truncate group-hover:text-slate-700 transition-colors">init repo</div>
+                                <div class="text-sm text-slate-500 text-right">1 天前</div>
+                            </div>
+
+                            <!-- Row 3 -->
+                            <div class="grid grid-cols-[minmax(250px,2fr)_120px_minmax(200px,3fr)_120px] gap-4 px-6 py-3.5 items-center hover:bg-[#F8FAFC] transition-colors cursor-pointer group">
+                                <div class="flex items-center gap-3">
+                                    <iconify-icon icon="lucide:folder" class="text-xl text-yellow-500"></iconify-icon>
+                                    <span class="font-medium text-slate-900 group-hover:text-blue-600 transition-colors">package.mo</span>
+                                </div>
+                                <div class="text-sm text-slate-500">2.34 KB</div>
+                                <div class="text-sm text-slate-500 truncate group-hover:text-slate-700 transition-colors">Add package structure</div>
+                                <div class="text-sm text-slate-500 text-right">2 天前</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Interaction Area -->
+                <div class="mt-16 mb-10">
+                    <!-- Comment Tabs -->
+                    <div class="border-b border-slate-200 mb-6">
+                        <nav class="flex gap-8">
+                            <button id="tab-comments" class="tab-item active flex items-center gap-1.5 pb-3 px-1 hover:text-slate-800 text-base">
+                                仓库评论
+                                <span class="px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-full ml-1 font-medium">0</span>
+                            </button>
+                            <button id="tab-activity" class="tab-item flex items-center gap-1.5 pb-3 px-1 text-slate-500 hover:text-slate-800 text-base font-medium">
+                                仓库动态
+                                <span class="px-2 py-0.5 bg-slate-100 text-slate-500 text-xs rounded-full ml-1">0</span>
+                            </button>
+                            <button id="tab-contributors" class="tab-item flex items-center gap-1.5 pb-3 px-1 text-slate-500 hover:text-slate-800 text-base font-medium">
+                                仓库贡献者
+                            </button>
+                        </nav>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div class="flex flex-col items-center justify-center py-16 bg-slate-50/50 rounded-2xl border border-slate-100 border-dashed mb-8">
+                        <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mb-4">
+                            <iconify-icon icon="lucide:message-square-dashed" class="text-2xl text-slate-400"></iconify-icon>
+                        </div>
+                        <p class="text-slate-400 font-medium">暂无数据</p>
+                        <p class="text-slate-400 text-sm mt-1">成为第一个发表评论的人吧！</p>
+                    </div>
+
+                    <!-- Comment Input Area -->
+                    <div class="flex gap-4">
+                        <!-- User Avatar -->
+                        <div class="flex-shrink-0">
+                            <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Felix" alt="User Avatar" class="w-10 h-10 rounded-full border border-slate-200 bg-slate-50">
+                        </div>
+                        
+                        <!-- Input Box -->
+                        <div class="flex-1 bg-white border border-slate-200 rounded-xl overflow-hidden focus-ring-orange transition-all shadow-sm">
+                            <textarea 
+                                placeholder="输入评论内容..."
+                                class="w-full p-4 min-h-[100px] outline-none resize-y text-sm text-slate-700 bg-transparent placeholder-slate-400"
+                            ></textarea>
+                            
+                            <div class="px-4 py-3 bg-slate-50/50 border-t border-slate-100 flex items-center justify-between">
+                                <span class="text-xs text-slate-400 font-medium">0 / 200</span>
+                                <div class="flex items-center gap-3">
+                                    <button id="btn-emoji" class="text-slate-400 hover:text-slate-600 transition-colors p-1">
+                                        <iconify-icon icon="lucide:smile" class="text-lg"></iconify-icon>
+                                    </button>
+                                    <button id="btn-submit-comment" class="px-6 py-2 bg-[#FE7300] hover:bg-[#E66800] text-white text-sm font-bold rounded-lg transition-all shadow-sm hover:-translate-y-0.5">
+                                        评论
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Global Footer -->
+        <!-- component: FooterBar (a4895586-0619-4e9a-b101-76c9948f9b73) -->
+<div v-scope="{ ...{&quot;aboutHref&quot;:&quot;#about&quot;,&quot;teamHref&quot;:&quot;#team&quot;,&quot;contactHref&quot;:&quot;#contact&quot;,&quot;docHref&quot;:&quot;#docs&quot;,&quot;helpHref&quot;:&quot;#help&quot;,&quot;feedbackHref&quot;:&quot;#feedback&quot;,&quot;termsHref&quot;:&quot;#terms&quot;,&quot;privacyHref&quot;:&quot;#privacy&quot;,&quot;icpHref&quot;:&quot;#&quot;,&quot;icpNumber&quot;:&quot;京ICP备202103456号&quot;,&quot;wechatHref&quot;:&quot;#wechat&quot;,&quot;githubHref&quot;:&quot;https://github.com&quot;,&quot;currentYear&quot;:2024}, $emit() {} }">
+<footer class="bg-white border-t border-slate-100 py-16">
+    <div class="max-w-[1440px] mx-auto px-10">
+        <div class="flex flex-col lg:flex-row justify-between gap-12">
+            <div class="max-w-xs">
+                <div class="font-display text-xl font-extrabold mb-4" style="font-family: 'Outfit', sans-serif;">
+                    <span class="text-[#FE7300]">mo</span>hub
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    连接智慧，驱动创新。mohub 是面向未来的专业科学计算社区与协作平台。
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap gap-x-16 gap-y-10">
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">关于平台</h4>
+                    <a :href="aboutHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">了解 mohub</a>
+                    <a :href="teamHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">加入我们</a>
+                    <a :href="contactHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">联系支持</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">社区资源</h4>
+                    <a :href="docHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">技术文档</a>
+                    <a :href="helpHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">帮助中心</a>
+                    <a :href="feedbackHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">反馈建议</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">法律合规</h4>
+                    <a :href="termsHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">服务协议</a>
+                    <a :href="privacyHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">隐私协议</a>
+                    <a :href="icpHref" class="text-sm text-slate-500">{{ icpNumber }}</a>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+                <a :href="wechatHref" class="w-10 h-10 flex items-center justify-center bg-slate-50 rounded-full text-slate-400 hover:text-emerald-500 hover:bg-emerald-50 transition-all">
+                    <iconify-icon icon="ri:wechat-fill" class="text-2xl"></iconify-icon>
+                </a>
+                <a :href="githubHref" class="w-10 h-10 flex items-center justify-center bg-slate-50 rounded-full text-slate-400 hover:text-slate-900 hover:bg-slate-200 transition-all">
+                    <iconify-icon icon="ri:github-fill" class="text-2xl"></iconify-icon>
+                </a>
+            </div>
+        </div>
+        <div class="mt-16 pt-8 border-t border-slate-50 text-center text-slate-400 text-[12px]">
+            <p>© {{ currentYear }} mohub Inc. 保留所有权利。</p>
+        </div>
+    </div>
+</footer>
+</div>
+<!-- /component: FooterBar (a4895586-0619-4e9a-b101-76c9948f9b73) -->
+    </div>
+</body>
+</html>

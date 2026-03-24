@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工作台 - mohub 专业科学计算协作云平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @import url('https://api.fontshare.com/v2/css?f[]=outfit@400,500,600,700,800&f[]=satoshi@400,500,700&display=swap');
+
+        :root {
+            --brand-orange: #FE7300;
+            --syslab-green: #4CAF50;
+            --sysplorer-blue: #2196F3;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --bg-page: #FFFFFF;
+            --bg-alt: #F8FAFC;
+        }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-display {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Custom Sidebar Active State */
+        .sidebar-active {
+            color: var(--brand-orange) !important;
+            background-color: #FFF7ED;
+            border-right: 3px solid var(--brand-orange);
+        }
+
+        /* Card Transitions */
+        .repo-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .repo-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            border-color: #FE730050;
+        }
+
+        .hero-gradient {
+            background: #FFFFFF;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-pattern {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            opacity: 0.15;
+            background-image: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            mask-image: linear-gradient(to left, black, transparent);
+        }
+    </style>
+  <style>sd-component { display: block; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/petite-vue@0.4.1/dist/petite-vue.iife.js" defer init></script>
+</head>
+<body>
+    <div class="min-h-screen bg-white flex flex-col">
+        <!-- Navigation Component -->
+        <!-- component: NavigationBar (f3e0ad58-b172-4b4c-baf0-da1baa10d989) -->
+<div v-scope="{ ...{&quot;activeItem&quot;:&quot;profile&quot;,&quot;logoHref&quot;:&quot;#&quot;,&quot;homeHref&quot;:&quot;#&quot;,&quot;techHref&quot;:&quot;#&quot;,&quot;shareHref&quot;:&quot;#&quot;,&quot;uniHref&quot;:&quot;#&quot;,&quot;compHref&quot;:&quot;#&quot;,&quot;aiHref&quot;:&quot;#&quot;,&quot;showNotificationBadge&quot;:true,&quot;userAvatarUrl&quot;:&quot;https://api.dicebear.com/7.x/notionists/svg?seed=Felix&quot;}, $emit() {} }">
+<header class="sticky top-0 z-50 bg-white border-b border-slate-100">
+    <div class="max-w-[1440px] mx-auto px-10 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-10">
+            <a :href="logoHref" class="flex items-center gap-2">
+                <span class="font-display text-2xl font-extrabold tracking-tight" style="font-family: 'Outfit', sans-serif;">
+                    <span class="text-[#FE7300]">mo</span>hub
+                </span>
+            </a>
+            
+            <nav class="hidden lg:flex items-center gap-8 h-full">
+                <a :href="homeHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'home' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    首页
+                    <div v-if="activeItem === 'home'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="techHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'tech' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    技术交流
+                    <div v-if="activeItem === 'tech'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="shareHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'share' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    众创共享
+                    <div v-if="activeItem === 'share'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="uniHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'uni' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    高校专区
+                    <div v-if="activeItem === 'uni'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="compHref" class="relative font-medium transition-colors hover:text-slate-900" :class="activeItem === 'comp' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    竞赛
+                    <div v-if="activeItem === 'comp'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+                <a :href="aiHref" class="relative font-medium transition-colors hover:text-slate-900 flex items-center gap-1.5" :class="activeItem === 'ai' ? 'text-[#FE7300]' : 'text-slate-500'">
+                    <iconify-icon icon="lucide:sparkles" :class="activeItem === 'ai' ? 'text-[#FE7300]' : 'text-[#FE7300]'"></iconify-icon>
+                    智能问答助手
+                    <div v-if="activeItem === 'ai'" class="absolute -bottom-[28px] left-0 right-0 h-[2px] bg-[#FE7300]"></div>
+                </a>
+            </nav>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <div class="flex items-center gap-1">
+                <button @click="$emit('search')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all">
+                    <iconify-icon icon="lucide:search" class="text-xl"></iconify-icon>
+                </button>
+                <button @click="$emit('openShelf')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all">
+                    <iconify-icon icon="lucide:library" class="text-xl"></iconify-icon>
+                </button>
+                <button @click="$emit('openNotifications')" class="w-9 h-9 flex items-center justify-center text-slate-400 hover:text-[#FE7300] hover:bg-orange-50 rounded-full transition-all relative">
+                    <iconify-icon icon="lucide:bell" class="text-xl"></iconify-icon>
+                    <span v-if="showNotificationBadge" class="absolute top-2 right-2 w-1.5 h-1.5 bg-[#FE7300] rounded-full ring-2 ring-white"></span>
+                </button>
+            </div>
+            <div class="h-6 w-[1px] bg-slate-200 mx-2"></div>
+            <div @click="$emit('toggleUserMenu')" class="flex items-center cursor-pointer group">
+                <div class="w-9 h-9 rounded-full bg-slate-50 border border-slate-100 overflow-hidden">
+                    <img :src="userAvatarUrl" alt="User Avatar" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</div>
+<!-- /component: NavigationBar (f3e0ad58-b172-4b4c-baf0-da1baa10d989) -->
+
+        <!-- Hero Banner Section -->
+        <section class="hero-gradient border-t-[3px] border-b border-[#FE7300] py-20 px-10 relative">
+            
+
+            <div class="max-w-[1440px] mx-auto relative z-10 flex flex-col lg:flex-row items-center justify-between gap-16">
+                <!-- Left Content: Title & Feature List -->
+                <div class="flex-1 space-y-10">
+                    <div class="space-y-4">
+                        <h1 class="font-display text-6xl font-extrabold tracking-tight text-slate-900">云端开发 IDE</h1>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <!-- Feature 1 -->
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-400 shrink-0 border border-blue-500/30">
+                                <iconify-icon icon="lucide:users-2" class="text-2xl"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="text-slate-900 font-bold text-lg flex items-center gap-2">💻 实时协作编程</h3>
+                                <p class="text-slate-500 text-sm">多人同步编辑，代码更新即时同步，提升团队协作效率</p>
+                            </div>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center text-green-400 shrink-0 border border-green-500/30">
+                                <iconify-icon icon="lucide:cloud" class="text-2xl"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="text-slate-900 font-bold text-lg flex items-center gap-2">☁️ 云端计算资源</h3>
+                                <p class="text-slate-500 text-sm">无需本地安装庞大环境，通过浏览器即可运行高性能仿真任务</p>
+                            </div>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="flex items-start gap-4 group">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center text-purple-400 shrink-0 border border-purple-500/30">
+                                <iconify-icon icon="lucide:git-branch" class="text-2xl"></iconify-icon>
+                            </div>
+                            <div>
+                                <h3 class="text-slate-900 font-bold text-lg flex items-center gap-2">🔄 版本控制集成</h3>
+                                <p class="text-slate-500 text-sm">模型版本历史完整追溯，支持快速回滚与代码差异对比</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Content: Professional Action Buttons -->
+                <div class="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-6 shrink-0">
+                    <a href="#" id="cta-syslab-online" class="group relative flex items-center gap-6 px-10 py-6 bg-[#4CAF50] text-white font-bold rounded-2xl shadow-xl transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(76,175,80,0.5)]">
+                        <iconify-icon icon="lucide:code-2" class="text-4xl transition-transform group-hover:scale-110"></iconify-icon>
+                        <div class="text-left">
+                            <span class="block text-xs opacity-80 font-medium mb-1 tracking-wider uppercase">开始科学计算</span>
+                            <span class="text-2xl font-display">打开 Syslab</span>
+                        </div>
+                        <div class="absolute inset-0 rounded-2xl ring-1 ring-white/20 group-hover:ring-white/40 transition-all"></div>
+                    </a>
+                    <a href="#" id="cta-sysplorer-online" class="group relative flex items-center gap-6 px-10 py-6 bg-[#2196F3] text-white font-bold rounded-2xl shadow-xl transition-all hover:-translate-y-2 hover:shadow-[0_20px_40px_-10px_rgba(33,150,243,0.5)]">
+                        <iconify-icon icon="lucide:layout" class="text-4xl transition-transform group-hover:scale-110"></iconify-icon>
+                        <div class="text-left">
+                            <span class="block text-xs opacity-80 font-medium mb-1 tracking-wider uppercase">开始系统建模</span>
+                            <span class="text-2xl font-display">打开 Sysplorer</span>
+                        </div>
+                        <div class="absolute inset-0 rounded-2xl ring-1 ring-white/20 group-hover:ring-white/40 transition-all"></div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content Area -->
+        <div class="flex-1 bg-white">
+            <div class="max-w-[1440px] mx-auto px-10 py-10 flex gap-10">
+                
+                <!-- Left Sidebar Navigation -->
+                <aside class="w-[260px] flex-shrink-0">
+                    <nav class="flex flex-col gap-1 sticky top-32">
+                        <div class="px-4 mb-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">浏览历史</div>
+                        <a href="#" id="side-recent" class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-[#FE7300] hover:bg-slate-50 rounded-xl transition-all mb-2">
+                            <iconify-icon icon="lucide:eye" class="text-xl"></iconify-icon>
+                            <span class="font-medium">最近查看</span>
+                        </a>
+                        <div class="px-4 mb-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">我的资源</div>
+                        <a href="#" id="side-repos" class="flex items-center gap-3 px-4 py-3 sidebar-active rounded-xl transition-all">
+                            <iconify-icon icon="lucide:folder-closed" class="text-xl"></iconify-icon>
+                            <span class="font-bold">我的仓库</span>
+                        </a>
+                        <a href="#" id="side-likes" class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-[#FE7300] hover:bg-slate-50 rounded-xl transition-all">
+                            <iconify-icon icon="lucide:thumbs-up" class="text-xl"></iconify-icon>
+                            <span class="font-medium">我的点赞</span>
+                        </a>
+                        <a href="#" id="side-stars" class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-[#FE7300] hover:bg-slate-50 rounded-xl transition-all">
+                            <iconify-icon icon="lucide:star" class="text-xl"></iconify-icon>
+                            <span class="font-medium">我的收藏</span>
+                        </a>
+                        <a href="#" id="side-copies" class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-[#FE7300] hover:bg-slate-50 rounded-xl transition-all">
+                            <iconify-icon icon="lucide:copy" class="text-xl"></iconify-icon>
+                            <span class="font-medium">我的复制</span>
+                        </a>
+                        
+                        <div class="h-px bg-slate-100 my-4"></div>
+                        
+                        <div class="px-4 mb-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">仿真实验</div>
+                        <a href="#" id="side-sim" class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-[#FE7300] hover:bg-slate-50 rounded-xl transition-all">
+                            <iconify-icon icon="lucide:beaker" class="text-xl"></iconify-icon>
+                            <span class="font-medium">我的仿真</span>
+                        </a>
+                        <a href="#" id="side-droplet" class="flex items-center gap-3 px-4 py-3 text-slate-500 hover:text-[#FE7300] hover:bg-slate-50 rounded-xl transition-all">
+                            <iconify-icon icon="lucide:droplet" class="text-xl"></iconify-icon>
+                            <span class="font-medium">实验数据</span>
+                        </a>
+                    </nav>
+                </aside>
+
+                <!-- Right Content Panel -->
+                <main class="flex-1">
+                    <!-- Toolbar Header -->
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-10">
+                        <div class="flex items-center gap-8">
+                            <button id="btn-new-repo" class="flex items-center gap-2 px-6 py-2.5 bg-[#FE7300] hover:bg-[#E66800] text-white font-bold rounded-xl transition-all shadow-md shadow-orange-500/20 hover:-translate-y-1.5">
+                                <iconify-icon icon="lucide:plus" class="text-xl"></iconify-icon>
+                                新建模型仓库
+                            </button>
+                            <nav class="flex items-center gap-2 p-1 bg-slate-50 rounded-xl border border-slate-100">
+                                <button class="px-4 py-2 bg-[#FE7300] text-white font-bold rounded-lg text-sm shadow-sm transition-all">
+                                    全部 (2)
+                                </button>
+                                <button class="px-4 py-2 text-slate-400 hover:text-slate-700 font-medium text-sm transition-colors">
+                                    我创建的 (2)
+                                </button>
+                                <button class="px-4 py-2 text-slate-400 hover:text-slate-700 font-medium text-sm transition-colors">
+                                    我参与的 (0)
+                                </button>
+                            </nav>
+                        </div>
+                        
+                        <div class="relative w-full md:w-72">
+                            <iconify-icon icon="lucide:search" class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></iconify-icon>
+                            <input type="text" placeholder="请输入模型名称..." class="w-full pl-11 pr-10 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#FE7300]/20 transition-all">
+                            <button class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 hover:text-slate-500">
+                                <iconify-icon icon="lucide:x-circle" class="text-lg"></iconify-icon>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Repository Grid -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Repo Card 1 -->
+                        <div class="repo-card bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col">
+                            <!-- Visual Area -->
+                            <div class="aspect-video bg-slate-100 relative overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover" alt="Model Preview">
+                                <div class="absolute top-4 left-4">
+                                    <span class="px-2 py-1 bg-red-500 text-white text-[10px] font-bold rounded flex items-center gap-1">
+                                        <iconify-icon icon="lucide:award"></iconify-icon>
+                                        获奖作品
+                                    </span>
+                                </div>
+                                <div class="absolute bottom-4 right-4">
+                                    <span class="px-2.5 py-1 bg-white/90 backdrop-blur-sm text-[#FE7300] text-[10px] font-bold rounded-lg border border-orange-100">
+                                        基础模型库
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Info Area -->
+                            <div class="p-6 flex-1 flex flex-col">
+                                <a href="#" class="text-xl font-bold text-slate-900 hover:text-[#FE7300] transition-colors mb-3">六自由度振动数字平台</a>
+                                <p class="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2">
+                                    六自由度振动台在低频控制下可以进行模拟船体、飞机、地震等复杂环境下的动力学响应分析...
+                                </p>
+                                
+                                <div class="mt-auto flex items-center justify-between pt-6 border-t border-slate-50">
+                                    <div class="flex items-center gap-2">
+                                        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Felix" class="w-6 h-6 rounded-full border border-slate-100">
+                                        <span class="text-xs text-slate-500 font-medium">wechat-6420</span>
+                                    </div>
+                                    <div class="flex items-center gap-4 text-slate-400">
+                                        <div class="flex items-center gap-1 text-[11px]">
+                                            <iconify-icon icon="lucide:file-code-2"></iconify-icon> 0
+                                        </div>
+                                        <div class="flex items-center gap-1 text-[11px]">
+                                            <iconify-icon icon="lucide:thumbs-up"></iconify-icon> 1
+                                        </div>
+                                        <div class="flex items-center gap-1 text-[11px]">
+                                            <iconify-icon icon="lucide:eye"></iconify-icon> 1
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Repo Card 2 -->
+                        <div class="repo-card bg-white border border-slate-100 rounded-2xl overflow-hidden flex flex-col shadow-sm">
+                            <div class="aspect-video bg-slate-50 relative flex items-center justify-center">
+                                <div class="relative w-20 h-20">
+                                    <div class="absolute inset-0 bg-slate-200 rounded-2xl rotate-6 opacity-40"></div>
+                                    <div class="absolute inset-0 bg-white border-2 border-slate-300 rounded-2xl flex items-center justify-center">
+                                        <iconify-icon icon="lucide:box" class="text-slate-300 text-3xl"></iconify-icon>
+                                    </div>
+                                </div>
+                                <div class="absolute top-4 left-4">
+                                    <span class="px-2.5 py-1 bg-slate-900 text-white text-[10px] font-bold rounded-lg flex items-center gap-1">
+                                        <iconify-icon icon="lucide:lock"></iconify-icon> 私有仓库
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <a href="#" class="text-lg font-bold text-slate-900 hover:text-[#FE7300] transition-colors mb-2">核心控制算法验证集</a>
+                                <p class="text-slate-500 text-xs leading-relaxed mb-6 line-clamp-2">用于存放基础控制算法的 PID、LQR 及 MPC 模块，主要用于闭环系统验证。</p>
+                                <div class="mt-auto flex items-center justify-between pt-6 border-t border-slate-50">
+                                    <div class="flex items-center gap-2">
+                                        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Felix" class="w-6 h-6 rounded-full border border-slate-100">
+                                        <span class="text-[11px] text-slate-500 font-medium">wechat-6420</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-slate-400">
+                                        <div class="flex items-center gap-1 text-[10px]"><iconify-icon icon="lucide:code-2"></iconify-icon> 12</div>
+                                        <div class="flex items-center gap-1 text-[10px]"><iconify-icon icon="lucide:star"></iconify-icon> 4</div>
+                                        <div class="flex items-center gap-1 text-[10px]"><iconify-icon icon="lucide:eye"></iconify-icon> 28</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Repo Card 3 -->
+                        <div class="repo-card bg-white border border-slate-100 rounded-2xl overflow-hidden flex flex-col shadow-sm">
+                            <div class="aspect-video bg-orange-50 relative flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover opacity-80">
+                                <div class="absolute top-4 left-4">
+                                    <span class="px-2.5 py-1 bg-blue-600 text-white text-[10px] font-bold rounded-lg flex items-center gap-1 shadow-sm">
+                                        <iconify-icon icon="lucide:database"></iconify-icon> 基础模型库
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <a href="#" class="text-lg font-bold text-slate-900 hover:text-[#FE7300] transition-colors mb-2">车辆动力学模型库 (2024)</a>
+                                <p class="text-slate-500 text-xs leading-relaxed mb-6 line-clamp-2">包含七自由度整车模型及常用的魔术公式轮胎模型，适用于底盘域控制开发。</p>
+                                <div class="mt-auto flex items-center justify-between pt-6 border-t border-slate-50">
+                                    <div class="flex items-center gap-2">
+                                        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Engineer" class="w-6 h-6 rounded-full border border-slate-100">
+                                        <span class="text-[11px] text-slate-500 font-medium">Auto_Expert</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-slate-400">
+                                        <div class="flex items-center gap-1 text-[10px]"><iconify-icon icon="lucide:code-2"></iconify-icon> 45</div>
+                                        <div class="flex items-center gap-1 text-[10px]"><iconify-icon icon="lucide:thumbs-up"></iconify-icon> 128</div>
+                                        <div class="flex items-center gap-1 text-[10px]"><iconify-icon icon="lucide:eye"></iconify-icon> 1.2k</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Repo Card 4 -->
+                        <div class="repo-card bg-white border border-slate-100 rounded-2xl overflow-hidden flex flex-col shadow-sm">
+                            <div class="aspect-video bg-emerald-50 relative flex items-center justify-center overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1532187875605-2fe358511423?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover opacity-60">
+                                <div class="absolute top-4 left-4">
+                                    <span class="px-2.5 py-1 bg-emerald-500 text-white text-[10px] font-bold rounded-lg flex items-center gap-1 shadow-sm">
+                                        <iconify-icon icon="lucide:globe"></iconify-icon> 开源共享
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <a href="#" class="text-lg font-bold text-slate-900 hover:text-[#FE7300] transition-colors mb-2">锂离子电池热失控仿真模型</a>
+                                <p class="text-slate-500 text-xs leading-relaxed mb-6 line-clamp-2">基于电化学与热力学耦合的单体电池模型，用于预测不同循环工况下的温升表现。</p>
+                                <div class="mt-auto flex items-center justify-between pt-6 border-t border-slate-50">
+                                    <div class="flex items-center gap-2">
+                                        <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Lab" class="w-6 h-6 rounded-full border border-slate-100">
+                                        <span class="text-[11px] text-slate-500 font-medium">Battery_Lab</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-slate-400">
+                                        <div class="flex items-center gap-1 text-[10px]"><iconify-icon icon="lucide:code-2"></iconify-icon> 8</div>
+                                        <div class="flex items-center gap-1 text-[10px]"><iconify-icon icon="lucide:thumbs-up"></iconify-icon> 56</div>
+                                        <div class="flex items-center gap-1 text-[10px]"><iconify-icon icon="lucide:eye"></iconify-icon> 452</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More (Optional Placeholder) -->
+                    <div class="mt-16 flex flex-col items-center gap-4">
+                        <button class="px-12 py-3.5 bg-white border border-slate-200 text-slate-600 font-bold rounded-xl hover:bg-slate-50 hover:border-slate-300 transition-all text-sm shadow-sm flex items-center gap-2">
+                            <iconify-icon icon="lucide:refresh-cw" class="text-lg"></iconify-icon>
+                            加载更多仓库
+                        </button>
+                        <p class="text-[11px] text-slate-400 font-medium tracking-wide">当前显示 4 / 24 个仓库</p>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Footer Bar Component -->
+        <!-- component: FooterBar (a4895586-0619-4e9a-b101-76c9948f9b73) -->
+<div v-scope="{ ...{&quot;aboutHref&quot;:&quot;#about&quot;,&quot;teamHref&quot;:&quot;#team&quot;,&quot;contactHref&quot;:&quot;#contact&quot;,&quot;docHref&quot;:&quot;#docs&quot;,&quot;helpHref&quot;:&quot;#help&quot;,&quot;feedbackHref&quot;:&quot;#feedback&quot;,&quot;termsHref&quot;:&quot;#terms&quot;,&quot;privacyHref&quot;:&quot;#privacy&quot;,&quot;icpHref&quot;:&quot;#&quot;,&quot;icpNumber&quot;:&quot;京ICP备202103456号&quot;,&quot;wechatHref&quot;:&quot;#wechat&quot;,&quot;githubHref&quot;:&quot;https://github.com&quot;,&quot;currentYear&quot;:2024}, $emit() {} }">
+<footer class="bg-white border-t border-slate-100 py-16">
+    <div class="max-w-[1440px] mx-auto px-10">
+        <div class="flex flex-col lg:flex-row justify-between gap-12">
+            <div class="max-w-xs">
+                <div class="font-display text-xl font-extrabold mb-4" style="font-family: 'Outfit', sans-serif;">
+                    <span class="text-[#FE7300]">mo</span>hub
+                </div>
+                <p class="text-slate-400 text-sm leading-relaxed">
+                    连接智慧，驱动创新。mohub 是面向未来的专业科学计算社区与协作平台。
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap gap-x-16 gap-y-10">
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">关于平台</h4>
+                    <a :href="aboutHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">了解 mohub</a>
+                    <a :href="teamHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">加入我们</a>
+                    <a :href="contactHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">联系支持</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">社区资源</h4>
+                    <a :href="docHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">技术文档</a>
+                    <a :href="helpHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">帮助中心</a>
+                    <a :href="feedbackHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">反馈建议</a>
+                </div>
+                <div class="flex flex-col gap-4">
+                    <h4 class="font-bold text-sm text-slate-900">法律合规</h4>
+                    <a :href="termsHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">服务协议</a>
+                    <a :href="privacyHref" class="text-sm text-slate-500 hover:text-[#FE7300] transition-colors">隐私协议</a>
+                    <a :href="icpHref" class="text-sm text-slate-500">{{ icpNumber }}</a>
+                </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+                <a :href="wechatHref" class="w-10 h-10 flex items-center justify-center bg-slate-50 rounded-full text-slate-400 hover:text-emerald-500 hover:bg-emerald-50 transition-all">
+                    <iconify-icon icon="ri:wechat-fill" class="text-2xl"></iconify-icon>
+                </a>
+                <a :href="githubHref" class="w-10 h-10 flex items-center justify-center bg-slate-50 rounded-full text-slate-400 hover:text-slate-900 hover:bg-slate-200 transition-all">
+                    <iconify-icon icon="ri:github-fill" class="text-2xl"></iconify-icon>
+                </a>
+            </div>
+        </div>
+        <div class="mt-16 pt-8 border-t border-slate-50 text-center text-slate-400 text-[12px]">
+            <p>© {{ currentYear }} mohub Inc. 保留所有权利。</p>
+        </div>
+    </div>
+</footer>
+</div>
+<!-- /component: FooterBar (a4895586-0619-4e9a-b101-76c9948f9b73) -->
+    </div>
+</body>
+</html>

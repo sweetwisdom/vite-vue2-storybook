@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mohub - 专业科学计算协作云平台</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <style>
+        @import url('https://api.fontshare.com/v2/css?f[]=outfit@400,500,600,700,800&f[]=satoshi@400,500,700&display=swap');
+
+        :root {
+            --brand-orange: #FE7300;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --bg-page: #FFFFFF;
+            --bg-alt: #F8FAFC;
+        }
+
+        body {
+            font-family: 'Satoshi', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .font-display {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link-active {
+            color: var(--brand-orange) !important;
+        }
+
+        .nav-link-active::after {
+            content: '';
+            position: absolute;
+            bottom: -28px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--brand-orange);
+        }
+
+        .feature-card {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+        }
+
+        .btn-primary {
+            background-color: var(--brand-orange);
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            border: 1px solid #E2E8F0;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: #F1F5F9;
+            border-color: #CBD5E1;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen bg-white flex flex-col">
+        <!-- Header Navigation -->
+        <header class="sticky top-0 z-50 bg-white border-b border-slate-100">
+            <div class="max-w-[1440px] mx-auto px-10 h-20 flex items-center justify-between">
+                <div class="flex items-center gap-12">
+                    <a href="#" id="nav-logo-link" class="flex items-center gap-2">
+                        <span class="font-display text-2xl font-extrabold tracking-tight">
+                            <span class="text-[#FE7300]">mo</span>hub
+                        </span>
+                    </a>
+                    
+                    <nav class="hidden lg:flex items-center gap-8">
+                        <a href="#" id="nav-home-link" class="nav-link nav-link-active font-medium text-slate-600 hover:text-slate-900">首页</a>
+                        <a href="./技术交流.html" id="nav-tech-link" class="nav-link font-medium text-slate-600 hover:text-slate-900">技术交流</a>
+                        <a href="./模型共享社区.html" id="nav-share-link" class="nav-link font-medium text-slate-600 hover:text-slate-900">众创共享</a>
+                        <a href="./模型共享社区.html" id="nav-uni-link" class="nav-link font-medium text-slate-600 hover:text-slate-900">高校专区</a>
+                        <a href="#" id="nav-comp-link" class="nav-link font-medium text-slate-600 hover:text-slate-900">竞赛</a>
+                        <a href="./智能问答助手.html" id="nav-ai-link" class="nav-link font-medium text-slate-600 hover:text-slate-900 flex items-center gap-1.5">
+                            <iconify-icon icon="lucide:sparkles" class="text-[#FE7300]"></iconify-icon>
+                            智能问答助手
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <div class="flex items-center gap-3">
+                        <button id="tool-search-btn" class="w-10 h-10 flex items-center justify-center text-slate-500 hover:bg-slate-50 rounded-full transition-colors">
+                            <iconify-icon icon="lucide:search" class="text-xl"></iconify-icon>
+                        </button>
+                        <button id="tool-shelf-btn" class="w-10 h-10 flex items-center justify-center text-slate-500 hover:bg-slate-50 rounded-full transition-colors">
+                            <iconify-icon icon="lucide:library" class="text-xl"></iconify-icon>
+                        </button>
+                        <button id="tool-notification-btn" class="w-10 h-10 flex items-center justify-center text-slate-500 hover:bg-slate-50 rounded-full transition-colors relative">
+                            <iconify-icon icon="lucide:bell" class="text-xl"></iconify-icon>
+                            <span class="absolute top-2.5 right-2.5 w-2 h-2 bg-[#FE7300] rounded-full ring-2 ring-white"></span>
+                        </button>
+                    </div>
+                    <div class="h-8 w-[1px] bg-slate-200"></div>
+                    <div id="user-avatar-trigger" class="flex items-center gap-3 cursor-pointer group">
+                        <div class="w-9 h-9 rounded-full bg-slate-100 border border-slate-200 overflow-hidden">
+                            <img src="https://api.dicebear.com/7.x/notionists/svg?seed=Felix" alt="User Avatar" class="w-full h-full object-cover">
+                        </div>
+                        <iconify-icon icon="lucide:chevron-down" class="text-slate-400 group-hover:text-slate-600 transition-colors"></iconify-icon>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <main class="flex-1">
+            <section class="pt-32 pb-24 px-10 overflow-hidden">
+                <div class="max-w-[1440px] mx-auto flex flex-col items-center text-center">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-orange-50 text-[#FE7300] rounded-full text-sm font-semibold mb-8 border border-orange-100">
+                        <iconify-icon icon="lucide:rocket"></iconify-icon>
+                        新一代 MATLAB 协作生态系统
+                    </div>
+                    <h1 class="font-display text-8xl font-extrabold tracking-tight text-slate-900 mb-8">
+                        mohub
+                    </h1>
+                    <p class="max-w-2xl text-xl text-slate-500 leading-relaxed mb-12">
+                        为科研人员、工程师和开发者量身定制。在这里，您可以分享高精尖模型、探讨前沿算法，或者与数千名 MATLAB 高手并肩前行。
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <a href="#" id="hero-primary-cta" class="btn-primary px-10 py-4 text-white font-bold rounded-xl shadow-lg shadow-orange-500/20">
+                            开启协作之旅
+                        </a>
+                        <a href="#" id="hero-secondary-cta" class="btn-outline px-10 py-4 text-slate-600 font-bold rounded-xl">
+                            了解更多功能
+                        </a>
+                    </div>
+
+                    <!-- Abstract Visual -->
+                    <div class="mt-20 w-full max-w-5xl aspect-[16/7] bg-slate-50 rounded-3xl border border-slate-100 p-8 shadow-inner overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-white/50 pointer-events-none"></div>
+                        <div class="flex flex-col gap-6">
+                            <div class="flex gap-4">
+                                <div class="w-12 h-4 bg-slate-200 rounded-full"></div>
+                                <div class="w-24 h-4 bg-slate-100 rounded-full"></div>
+                            </div>
+                            <div class="grid grid-cols-6 gap-4">
+                                <div class="col-span-2 h-32 bg-white rounded-2xl shadow-sm border border-slate-200/50"></div>
+                                <div class="col-span-4 h-32 bg-[#FE7300]/5 rounded-2xl border border-[#FE7300]/10 flex items-center justify-center">
+                                    <iconify-icon icon="lucide:activity" class="text-5xl text-[#FE7300]/20"></iconify-icon>
+                                </div>
+                            </div>
+                            <div class="h-24 bg-white rounded-2xl shadow-sm border border-slate-200/50"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Grid -->
+            <section class="py-24 bg-slate-50">
+                <div class="max-w-[1440px] mx-auto px-10">
+                    <div class="mb-16">
+                        <h2 class="font-display text-3xl font-bold text-slate-900">为什么选择 mohub <span class="text-[#FE7300]">?</span></h2>
+                        <p class="text-slate-500 mt-2">我们提供从开发到共享的全链路专业支持</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <!-- Card 1 -->
+                        <div class="feature-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-orange-50 text-[#FE7300] mb-6">
+                                <iconify-icon icon="lucide:terminal" class="text-2xl"></iconify-icon>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-3">仿真开发</h3>
+                            <p class="text-slate-500 leading-relaxed text-sm">
+                                全面支持 Syslab 环境，提供卓越的 Julia 与 MATLAB 语法体验，让仿真计算更高效。
+                            </p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="feature-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-orange-50 text-[#FE7300] mb-6">
+                                <iconify-icon icon="lucide:cloud-share" class="text-2xl"></iconify-icon>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-3">众创共享</h3>
+                            <p class="text-slate-500 leading-relaxed text-sm">
+                                云端模型库一键下载调用，支持多维标签分类。让您的代码创造更大的社会价值。
+                            </p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="feature-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-orange-50 text-[#FE7300] mb-6">
+                                <iconify-icon icon="lucide:graduation-cap" class="text-2xl"></iconify-icon>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-3">高校专区</h3>
+                            <p class="text-slate-500 leading-relaxed text-sm">
+                                专为学术界设计的协作板块，集成校园正版授权，助力国家级重点实验室项目研发。
+                            </p>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="feature-card bg-white p-8 rounded-2xl shadow-sm border border-slate-100">
+                            <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-orange-50 text-[#FE7300] mb-6">
+                                <iconify-icon icon="lucide:cpu" class="text-2xl"></iconify-icon>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 mb-3">AI 助手</h3>
+                            <p class="text-slate-500 leading-relaxed text-sm">
+                                基于垂直领域大模型，秒级生成高质量脚本，解决复杂的矩阵运算与算法优化难题。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Stats Footer Section -->
+        <footer class="bg-white border-t border-slate-100 py-16">
+            <div class="max-w-[1440px] mx-auto px-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-4">
+                        <div class="font-display text-xl font-extrabold tracking-tight mb-4">
+                            <span class="text-[#FE7300]">mo</span>hub
+                        </div>
+                        <p class="text-slate-500 text-sm leading-relaxed max-w-xs">
+                            连接智慧，驱动创新。mohub 是面向未来的专业科学计算社区与协作平台。
+                        </p>
+                    </div>
+                    <div class="lg:col-span-8 flex flex-col md:flex-row justify-between gap-12">
+                        <div class="flex items-center gap-16">
+                            <div class="text-center md:text-left">
+                                <div class="text-3xl font-display font-extrabold text-slate-900">150,000+</div>
+                                <div class="text-slate-400 text-xs mt-1 uppercase tracking-wider font-bold">活跃开发者</div>
+                            </div>
+                            <div class="text-center md:text-left">
+                                <div class="text-3xl font-display font-extrabold text-slate-900">85,000+</div>
+                                <div class="text-slate-400 text-xs mt-1 uppercase tracking-wider font-bold">成熟计算模型</div>
+                            </div>
+                            <div class="text-center md:text-left">
+                                <div class="text-3xl font-display font-extrabold text-slate-900">200+</div>
+                                <div class="text-slate-400 text-xs mt-1 uppercase tracking-wider font-bold">重点合作高校</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <a href="#" id="social-wechat" class="text-slate-400 hover:text-[#FE7300] transition-colors"><iconify-icon icon="ri:wechat-fill" class="text-2xl"></iconify-icon></a>
+                            <a href="#" id="social-github" class="text-slate-400 hover:text-slate-900 transition-colors"><iconify-icon icon="ri:github-fill" class="text-2xl"></iconify-icon></a>
+                            <div class="h-6 w-[1px] bg-slate-200 hidden md:block"></div>
+                            <a href="#" id="footer-feedback-link" class="text-sm font-medium text-slate-600 hover:text-[#FE7300]">反馈建议</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-16 pt-8 border-t border-slate-50 flex flex-col md:flex-row justify-between text-slate-400 text-xs">
+                    <p>© 2024 mohub Inc. 保留所有权利。</p>
+                    <div class="flex gap-6 mt-4 md:mt-0">
+                        <a href="#" id="footer-terms">服务条款</a>
+                        <a href="#" id="footer-privacy">隐私协议</a>
+                        <a href="#" id="footer-icp">京ICP备12345678号</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
+
